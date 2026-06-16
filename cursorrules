@@ -1,0 +1,63 @@
+# Outreach Engine — Cursor Rules
+
+## Stack
+- Next.js 16 App Router (not Pages Router — never suggest pages/)
+- TypeScript strict mode throughout
+- Prisma + PostgreSQL for data
+- Vercel AI SDK (ai package) for all LLM calls — not raw fetch to Anthropic
+- Tailwind CSS for styling
+- Zod for all input validation
+- claude-sonnet-4-6 as the model string everywhere
+
+## Code style
+- Always use `async/await`, never `.then()` chains
+- Prefer `const` over `let` everywhere possible
+- Named exports for components, default exports only for Next.js pages/layouts
+- No `any` types — use `unknown` and narrow, or define the type
+- Zod schemas live in `/lib/schemas/` and are shared between client and server
+- All database access goes through `/lib/db/` — never import prisma directly in a route or component
+
+## File structure conventions
+- Server actions go in `/app/actions/` with `'use server'` directive
+- API routes go in `/app/api/[route]/route.ts`
+- Reusable components in `/components/`
+- Business logic (agent loop, scoring, prompts) in `/lib/ai/`
+- Prisma client singleton in `/lib/db/client.ts`
+- All prompts as exported constants in `/lib/ai/prompts.ts` — not inline strings
+
+## AI / agent loop
+- Use Vercel AI SDK `streamText` with tools for the research loop
+- Model is always `claude-sonnet-4-6` via `@ai-sdk/anthropic` provider
+- All prompts are in `/lib/ai/prompts.ts` as template functions that take typed params
+- Never hardcode API keys — always `process.env.ANTHROPIC_API_KEY`
+- Firecrawl calls go through `/lib/scraper.ts` — one wrapper, not scattered inline
+
+## API routes
+- Always validate request body with Zod before using it
+- Return consistent error shape: `{ error: string, code: string }`
+- Use HTTP status codes correctly (400 for validation, 401 for auth, 500 for unexpected)
+- No business logic in route handlers — call into `/lib/` functions
+
+## Database
+- Never call `prisma.$queryRaw` unless there's no Prisma query equivalent
+- Always select only needed fields — no `findMany` without `select` on large tables
+- Migrations via `prisma migrate dev` — never edit the database directly
+
+## Deployment target
+- Hosting on Railway, not Vercel
+- No Edge Runtime anywhere — always standard Node.js
+- No next/headers or next/cookies edge-only APIs
+- Environment variables come from Railway dashboard, not .env.local in production
+
+## Version-specific notes
+- Next.js 16.2.6+ — use proxy.ts not middleware.ts, Node 20.9+ required
+- Prisma 7.4.1 — ESM only, no binaryTargets, generator path changed from v6
+  check actual generator config against prisma.io/docs before accepting Cursor suggestions
+- Cursor's training data predates both — verify any scaffolded config files against official docs
+
+## What to avoid
+- Don't suggest `useEffect` for data fetching — use Server Components or Server Actions
+- Don't use `fetch` in client components for mutations — use Server Actions
+- Don't add auth until explicitly asked — single user MVP
+- Don't install extra UI libraries (no shadcn, no Radix, no MUI) — plain Tailwind only
+- Don't suggest `pages/api/` routes — App Router API routes only
