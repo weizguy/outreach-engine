@@ -1,0 +1,49 @@
+◇ injected env (5) from .env.local // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+KEY: fc-e5decad2e7bd41539df9cf21475bf8f0
+
+🌐 Scraping: https://wellfound.com/jobs?job_listing_slug=4348472-senior-software-engineer
+
+────────────────────────────────────────────────────────────
+✅ Scraped in 3.3s
+📄 Title: Find Startup Jobs Near You and Remote Jobs | Wellfound
+📝 Content length: 31009 chars
+
+--- First 1000 chars of markdown ---
+
+![](https://wellfound.com/images/candidates/jobs/company-size.png)![](https://wellfound.com/images/candidates/jobs/flower-logo.png)![](https://wellfound.com/images/candidates/jobs/circular-logo.png)![](https://wellfound.com/images/candidates/jobs/tiptop-logo.png)![](https://wellfound.com/images/candidates/jobs/discord-logo.png)![](https://wellfound.com/images/candidates/jobs/some-logo.png)![](https://wellfound.com/images/candidates/jobs/new-messages.png)
+
+# Over 130k remote & local startup jobs
+
+## Find what's next:
+
+Job title
+
+Location
+
+Search
+
+## Trending startups hiring now
+
+AI-first online slots studio building high-quality games with strong engineering standards
+
+Helping select companies become AI-native with the right infra, talent, and execution
+
+- Growing fast
+
+
+
+Showed strong hiring growth in the past month
+
+
+Blockchain security suite offering smart contract audits & AI powered security scanner
+
+- Growing fast
+
+
+
+Showed strong hiring growth in the past month
+
+
+The manufacturin
+
+... (30009 more chars)

@@ -1,0 +1,14 @@
+{
+    "companyName": "Acme Corp",
+    "companySummary": "B2B SaaS analytics platform serving 500+ enterprise clients, raised $12M Series A in March 2024",
+    "roleTitle": "Senior Full-Stack Engineer",
+    "managerName": "Sarah Chen",
+    "managerTitle": "CTO",
+    "managerEmail": "sarah.chen@acmecorp.com",
+    "techStack": ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "AWS", "OpenAI API"],
+    "teamSize": 8,
+    "companySize": 30,
+    "recentNews": "Raised $12M Series A in March 2024, growing team from 30 to 50 employees",
+    "aiMentioned": true,
+    "mostInterestingSignal": "Engineering team doubled last quarter and they're building AI-powered analytics — strong stack match and active growth"
+  }

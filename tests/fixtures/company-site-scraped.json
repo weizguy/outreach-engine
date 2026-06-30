@@ -1,0 +1,4 @@
+{
+    "title": "Acme Corp — B2B Analytics Platform",
+    "markdown": "# Acme Corp\n\nWe build the analytics platform that enterprise teams actually use.\n\n## Product\n\nAcme's platform connects to your existing data sources and surfaces insights your team can act on — without a data science team.\n\n## Company\n\nFounded in 2021. 30 employees. Backed by Sequoia and Y Combinator (W22).\n\nWe raised a $12M Series A in March 2024 led by Sequoia Capital.\n\n## Engineering blog highlights\n\n- How we scaled our Next.js app to 10,000 concurrent users\n- Moving from REST to tRPC: lessons learned\n- Building AI-powered anomaly detection with GPT-4\n\n## Recent news\n\n- March 2024: $12M Series A\n- January 2024: Launched Enterprise tier\n- Q4 2023: 3x revenue growth"
+  }

@@ -11,3 +11,66 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model User {
+  id            String         @id @default(cuid())
+  createdAt     DateTime       @default(now())
+  voiceSamples  VoiceSample[]
+  outreaches    Outreach[]
+}
+
+model VoiceSample {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  text      String   // the message they wrote
+  notes     String?  // their own notes on why it worked/didn't
+  createdAt DateTime @default(now())
+}
+
+model Outreach {
+  id              String        @id @default(cuid())
+  userId          String
+  user            User          @relation(fields: [userId], references: [id])
+
+  // Input
+  sourceUrl       String        // job post or LinkedIn URL
+  sourceType      SourceType    // JOB_POST | LINKEDIN_PROFILE
+
+  // Research output
+  companyName     String?
+  companySummary  String?
+  managerName     String?
+  managerTitle    String?
+  managerInsights String?       // what we found about them
+  stackMatch      Int?          // 0-100 score
+  opportunityScore Int?         // 0-100 composite score
+  scoreBreakdown  Json?         // { stackMatch, growthSignal, seniority }
+
+  // Message
+  draftMessage    String?
+  finalMessage    String?       // edited version they actually sent
+
+  // CRM
+  status          OutreachStatus @default(DRAFT)
+  sentAt          DateTime?
+  repliedAt       DateTime?
+  followUpDue     DateTime?
+  notes           String?
+
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+enum SourceType {
+  JOB_POST
+  LINKEDIN_PROFILE
+}
+
+enum OutreachStatus {
+  DRAFT
+  SENT
+  REPLIED
+  FOLLOW_UP_DUE
+  CLOSED
+}

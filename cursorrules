@@ -55,6 +55,14 @@
   check actual generator config against prisma.io/docs before accepting Cursor suggestions
 - Cursor's training data predates both — verify any scaffolded config files against official docs
 
+## Testing
+- Vitest for unit and integration tests
+- MSW for mocking Firecrawl and Bedrock in integration tests
+- Test files in /tests/unit/ and /tests/integration/
+- Fixtures in /tests/fixtures/ as real JSON/markdown files
+- Never mock the scoring logic — test it with real inputs
+- scripts/ folder for manual E2E runs using tsx
+
 ## What to avoid
 - Don't suggest `useEffect` for data fetching — use Server Components or Server Actions
 - Don't use `fetch` in client components for mutations — use Server Actions
